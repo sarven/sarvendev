@@ -71,7 +71,7 @@ Google, Facebook, Instagram etc. aby wyświetlać reklamy spersonalizowane anali
 Włączam tryb incognito i mnie nie widać, czy aby na pewno? Otóż nie, bardzo łatwo można zidentyfikować użytkownika 
 analizując ustawienia przeglądarki. Istnieje narzędzie [Fingerprintjs2](https://github.com/Valve/fingerprintjs2) do tworzenia „odcisku” przeglądarki, który 
 następnie można porównać i stwierdzić, że to cały czas ten sam użytkownik. Jaki „odcisk” ma Wasza przeglądarka można 
-znaleźć [tutaj](http://valve.github.io/fingerprintjs2/).
+znaleźć [tutaj](https://valve.github.io/fingerprintjs2/).
 
 ![Browser Fingerprint](/assets/img/2017-06-16/fingerprint.png)
 
