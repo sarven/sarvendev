@@ -1,7 +1,7 @@
 ---
 title: Tworzenie tła z poruszającymi się cząsteczkami
 date: 2017-03-17
-categories: [Html5, Javascript]
+categories: [Programming]
 permalink: /pl/2017/03/tworzenie-tla-z-poruszajacymi-sie-czasteczkami/
 image:
   path: /assets/img/particles/img.png

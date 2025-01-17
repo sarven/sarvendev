@@ -1,6 +1,6 @@
 ---
 title: Prywatność? A komu to potrzebne?
-date: 2017-03-17
+date: 2017-06-16
 categories: [Interesting]
 permalink: /pl/2017/06/prywatnosc-a-komu-to-potrzebne/
 image:
