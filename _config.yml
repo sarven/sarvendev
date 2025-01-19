@@ -118,11 +118,10 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    enabled: true
-    repo: sarven/sarvendev
-    repo_id: R_kgDONqWl1A
-    category: Comments
-    category_id: DIC_kwDONqWl1M4CmGlx
+    repo: 'sarven/sarvendev'
+    repo_id: 'R_kgDONqWl1A'
+    category: 'Comments'
+    category_id: 'DIC_kwDONqWl1M4CmGlx'
     mapping: # optional, default to 'pathname'
     strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
