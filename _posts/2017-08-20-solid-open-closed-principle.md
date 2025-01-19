@@ -1,5 +1,5 @@
 ---
-title: #2 SOLID – Open/closed principle
+title: SOLID – Open/closed principle
 date: 2017-08-20
 categories: [Programming, Good practices]
 permalink: /pl/2017/08/2-solid-openclosed-principle/

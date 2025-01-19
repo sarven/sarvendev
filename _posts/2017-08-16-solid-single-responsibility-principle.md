@@ -1,5 +1,5 @@
 ---
-title: #1 SOLID – Single responsibility principle
+title: SOLID – Single responsibility principle
 date: 2017-08-16
 categories: [Programming, Good practices]
 permalink: /pl/2017/08/1-solid-single-responsibility-principle/
