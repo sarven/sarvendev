@@ -50,7 +50,7 @@ Klasą odpowiedzialną za pobranie plików jest Crawler, który przyjmuje nastę
 - DataParser – parsowanie danych, czyli przekształcanie treści pliku na użyteczny obiekt
 
 ## Jak działa pobieranie plików?
-Początkowo wczytywany jest [plik startowy](http://gynvael.coldwind.pl/misja008_drone_io/scans/68eb1a7625837e38d55c54dc99257a17.txt):
+Początkowo wczytywany jest [plik startowy](https://gynvael.coldwind.pl/misja008_drone_io/scans/68eb1a7625837e38d55c54dc99257a17.txt):
 ```
 SCAN DRONE v0.17.3
 32 34
