@@ -2,7 +2,7 @@
 title: Service locator vs Dependency injection
 date: 2017-11-09
 categories: [Programming, Patterns]
-permalink: /pl/2017/08/5-solid-dependency-inversion-principle/
+permalink: /pl/2017/11/service-locator-vs-dependency-injection/
 image:
   path: /assets/img/2017-11-09/featured.png
 ---
