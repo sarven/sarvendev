@@ -21,33 +21,33 @@ Najdokładniejszymi zegarami są zegary atomowe, które właśnie mierzą czas n
 W tym celu powstało pojęcie sekundy przestępnej. Międzynarodowa Służba Ruchu Obrotowego Ziemi i Systemów Odniesienia (IERS (International Earth Rotation and Reference Systems Service)) decyduje kiedy taka sekunda powinna zostać dodana. Dodawana jest zwykle ostatniego dnia czerwca lub grudnia. Możliwe jest również odjęcie jednej sekundy, jednak na dzień dzisiejszy taka sytuacja jeszcze nie wystąpiła.
 
 Lista dodanych sekund:
-> (+11s) 30 czerwca 1972
-> (+12s) 31 grudnia 1972
-> (+13s) 31 grudnia 1973
-> (+14s) 31 grudnia 1974
-> (+15s) 31 grudnia 1975
-> (+16s) 31 grudnia 1976
-> (+17s) 31 grudnia 1977
-> (+18s) 31 grudnia 1978
-> (+19s) 31 grudnia 1979
-> (+20s) 30 czerwca 1981
-> (+21s) 30 czerwca 1982
-> (+22s) 30 czerwca 1983
-> (+23s) 30 czerwca 1985
-> (+24s) 31 grudnia 1987
-> (+25s) 31 grudnia 1989
-> (+26s) 31 grudnia 1990
-> (+27s) 30 czerwca 1992
-> (+28s) 30 czerwca 1993
-> (+29s) 30 czerwca 1994
-> (+30s) 31 grudnia 1995
-> (+31s) 30 czerwca 1997
-> (+32s) 31 grudnia 1998
-> (+33s) 31 grudnia 2005
-> (+34s) 31 grudnia 2008
-> (+35s) 30 czerwca 2012
-> (+36s) 30 czerwca 2015
-> (+37s) 31 grudnia 2016
+> (+11s) 30 czerwca 1972  
+> (+12s) 31 grudnia 1972  
+> (+13s) 31 grudnia 1973   
+> (+14s) 31 grudnia 1974  
+> (+15s) 31 grudnia 1975  
+> (+16s) 31 grudnia 1976  
+> (+17s) 31 grudnia 1977  
+> (+18s) 31 grudnia 1978  
+> (+19s) 31 grudnia 1979  
+> (+20s) 30 czerwca 1981  
+> (+21s) 30 czerwca 1982  
+> (+22s) 30 czerwca 1983  
+> (+23s) 30 czerwca 1985  
+> (+24s) 31 grudnia 1987  
+> (+25s) 31 grudnia 1989  
+> (+26s) 31 grudnia 1990  
+> (+27s) 30 czerwca 1992  
+> (+28s) 30 czerwca 1993  
+> (+29s) 30 czerwca 1994  
+> (+30s) 31 grudnia 1995  
+> (+31s) 30 czerwca 1997  
+> (+32s) 31 grudnia 1998  
+> (+33s) 31 grudnia 2005  
+> (+34s) 31 grudnia 2008  
+> (+35s) 30 czerwca 2012  
+> (+36s) 30 czerwca 2015  
+> (+37s) 31 grudnia 2016  
 
 ## Czas, a systemy informatyczne
 Czas występuje w zasadzie w większości projektów. Musimy mieć możliwość określenia kiedy wystąpiła dana akcja użytkownika, kiedy ma zostać wysłany dany email. Ważne może być również określenie czy limit czasu żądania już upłynął. W przypadku jednej maszyny jeszcze nie jest to jakoś bardzo skomplikowane. Jednak w przypadku systemów rozproszonych, gdzie mamy do czynienia z wieloma węzłami, replikacją itd. sytuacja jest bardziej skomplikowana. Czasy sprzętowe podawane przez zwykle oscylator kwarcowy nie są do końca dokładne i mogą być różnice pomiędzy węzłami. Gdy kolejność zdarzeń jest istotna, rozbieżność wskazań zegarów w węzłach jest nie do przyjęcia. Dlatego stosowany jest NTP (Network Time Protocol – protokół synchronizacji czasu), który dopasowuje wskazywany przez daną maszynę czas do czasu podawanego przez grupę serwerów.
