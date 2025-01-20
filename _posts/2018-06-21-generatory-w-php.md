@@ -31,9 +31,9 @@ foreach ($data as $item) {
 
 }
 ```
-![Blackfire Profile 1](/assets/images/2018-06-21/profile1.png)
+![Blackfire Profile 1](/assets/img/2018-06-21/profile1.png)
 Jednak po zwiększeniu liczby iteracji do 10 000 000 wynik  z blackfire wydaje się już nieco niepokojący. 537 MB to jest stanowczo za dużo jak na tak prostą operację. Gdzie leży problem?
-![Blackfire Profile 2](/assets/images/2018-06-21/profile2.png)
+![Blackfire Profile 2](/assets/img/2018-06-21/profile2.png)
 Odpowiedź jest bardzo prosta, funkcja getData() musi całą tablicę najpierw skonstruować, a następnie dopiero po zwróconej tablicy iterujemy. Tutaj własnie znajdują zastosowanie Generatory.
 ```php
 <?php
@@ -50,10 +50,10 @@ foreach ($data as $item) {
 
 }
 ```
-Przerobienie funkcji, aby korzystała z generatora jest jak widać bardzo proste. Warto zauważyć, że tym razem tablica nie jest od razu konstruowana w pamięci. Funkcja getData zwraca obiekt klasy [Generator](http://php.net/manual/en/class.generator.php), która implementuje interfejs [Iteratora](http://php.net/manual/en/class.iterator.php), co pozwala na proste przetwarzanie w pętli foreach.
+Przerobienie funkcji, aby korzystała z generatora jest jak widać bardzo proste. Warto zauważyć, że tym razem tablica nie jest od razu konstruowana w pamięci. Funkcja getData zwraca obiekt klasy [Generator](https://php.net/manual/en/class.generator.php), która implementuje interfejs [Iteratora](https://php.net/manual/en/class.iterator.php), co pozwala na proste przetwarzanie w pętli foreach.
 
 Wynik z blackfire prezentuje się następująco:
-![Blackfire Profile 3](/assets/images/2018-06-21/profile3.png)
+![Blackfire Profile 3](/assets/img/2018-06-21/profile3.png)
 
 Czas może trochę dłuższy, natomiast różnica zużycia pamięci w stosunku do poprzedniego rozwiązania jest kolosalna.
 
@@ -94,7 +94,7 @@ foreach ($lines as $line) {
 
 }
 ```
-![Blackfire Profile 4](/assets/images/2018-06-21/profile4.png)
+![Blackfire Profile 4](/assets/img/2018-06-21/profile4.png)
 Wynik z profilera pokazuje problem, przy głupim przetworzeniu pliku potrzebujemy ponad 1GB pamięci.
 
 ```php
@@ -124,7 +124,7 @@ PHP Warning:  fgets(): supplied resource is not a valid stream resource
 
 Wynik z blackfire pokazuje znaczącą różnice w użyciu pamięci:
 
-![Blackfire Profile 5](/assets/images/2018-06-21/profile5.png)
+![Blackfire Profile 5](/assets/img/2018-06-21/profile5.png)
 
 Oczywiście oba przykłady sprowadzają się do tego samego, czyli do iterowania po dużym zbiorze danych bez budowania go w całości w pamięci.
 
