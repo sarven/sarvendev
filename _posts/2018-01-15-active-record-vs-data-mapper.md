@@ -1,5 +1,5 @@
 ---
-title: Service locator vs Dependency injection
+title: Active record (Eloquent) vs Data mapper (Doctrine)
 date: 2018-01-15
 categories: [Programming, Patterns]
 permalink: /pl/2018/01/active-record-eloquent-vs-data-mapper-doctrine/
