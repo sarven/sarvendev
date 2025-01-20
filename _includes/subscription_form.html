@@ -1,7 +1,23 @@
-<div class="row subscription-form" style="background-color: #f6f6f6; margin-top: 20px; border: 1px solid #efefef; padding:10px !important; padding-bottom: 0 !important;">
+<div class="row subscription-form" style="background-color: var(--sidebar-bg); margin-top: 20px; border: 1px solid var(--sidebar-border-color); padding:10px !important; padding-bottom: 0 !important;">
 <div class="col-md-7">
   <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1734335");</style>
   <style type="text/css">
+    :root {
+      --button-subscribe-bg: #838081;
+      --button-subscribe-text: #ffffff;
+      --button-subscribe-border: #838081;
+      --button-subscribe-hover: #333333;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --button-subscribe-bg: var(--main-bg);
+        --button-subscribe-text: var(--sidebar-muted-color);
+        --button-subscrbe-border: var(--search-border-color);
+        --button-subscrbe-hover: #007bff;
+      }
+    }
+
     /* LOADER */
     .ml-form-embedSubmitLoad {
       display: inline-block;
@@ -62,7 +78,7 @@
       letter-spacing: normal !important;
     }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper {
-      background-color: #f6f6f6;
+      background-color: var(--sidebar-bg);
 
       border-width: 0px;
       border-color: transparent;
@@ -103,7 +119,7 @@
     }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
-      color: #34343c;
+      color: var(--sidebar-muted-color);
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
       font-size: 30px;
       font-weight: 400;
@@ -113,7 +129,7 @@
     }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
-      color: #34343c;
+      color: var(--sidebar-muted-color);
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
       font-size: 14px;
       font-weight: 400;
@@ -125,7 +141,7 @@
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol,
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ul,
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol {
-      color: #34343c;
+      color: var(--sidebar-muted-color);
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
       font-size: 14px;
     }
@@ -139,7 +155,7 @@
     }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p a,
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p a {
-      color: #34343c;
+      color: var(--sidebar-muted-color);
       text-decoration: underline;
     }
 
@@ -149,7 +165,7 @@
 
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group label {
       margin-bottom: 5px;
-      color: #34343c;
+      color: var(--sidebar-muted-color);
       font-size: 14px;
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
       font-weight: bold; font-style: normal; text-decoration: none;;
@@ -190,9 +206,9 @@
       margin: 0;
     }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
-      background-color: #ffffff !important;
-      color: #34343c !important;
-      border-color: #cccccc;
+      background-color: var(--main-bg) !important;
+      color: var(--sidebar-muted-color) !important;
+      border-color: var(--search-border-color);
       border-radius: 4px !important;
       border-style: solid !important;
       border-width: 1px !important;
@@ -210,20 +226,20 @@
       max-width: 100% !important;
     }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder,
-    #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: #34343c; }
+    #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: var(--sidebar-muted-color); }
 
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder,
-    #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: #34343c; }
+    #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: var(--sidebar-muted-color); }
 
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
-    #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: #34343c; }
+    #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: var(--sidebar-muted-color); }
 
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-moz-placeholder,
-    #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-moz-placeholder { color: #34343c; }
+    #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-moz-placeholder { color: var(--sidebar-muted-color); }
 
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow textarea, #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow textarea {
       background-color: #ffffff !important;
-      color: #34343c !important;
+      color: var(--sidebar-muted-color) !important;
       border-color: #cccccc;
       border-radius: 4px !important;
       border-style: solid !important;
@@ -399,7 +415,7 @@
 
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-select, #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-select {
       background-color: #ffffff !important;
-      color: #34343c !important;
+      color: var(--sidebar-muted-color) !important;
       border-color: #cccccc;
       border-radius: 4px !important;
       border-style: solid !important;
@@ -433,9 +449,9 @@
     .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal.labelsOn { padding-top: 25px;  }
     .ml-form-formContent.horozintalForm .ml-form-horizontalRow .horizontal-fields { box-sizing: border-box; float: left; padding-right: 10px;  }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input {
-      background-color: #ffffff;
-      color: #34343c;
-      border-color: #cccccc;
+      background-color: var(--button-subscribe-bg);
+      color: var(--sidebar-muted-color);
+      border-color: var(--search-border-color);
       border-radius: 4px;
       border-style: solid;
       border-width: 1px;
@@ -523,11 +539,11 @@
       width: 100%;
     }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
-      background-color: #838081 !important;
-      border: none !important;
+      background-color: var(--button-subscribe-bg) !important;
+      border: 1px solid var(--button-subscribe-border);
       border-radius: 4px !important;
       box-shadow: none !important;
-      color: #ffffff !important;
+      color: var(--button-subscribe-text) !important;
       cursor: pointer;
       font-family: 'Open Sans', Arial, Helvetica, sans-serif !important;
       font-size: 14px !important;
@@ -542,7 +558,7 @@
       display: none;
     }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
-      background-color: #333333 !important;
+      background-color: var(--button-subscribe-hover) !important;
     }
     .ml-subscribe-close {
       width: 30px;
