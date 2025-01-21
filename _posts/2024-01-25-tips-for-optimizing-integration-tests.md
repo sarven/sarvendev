@@ -33,8 +33,7 @@ Add flags to the composer install to optimize the autoloader.
 ## Use transactions
 Use database transactions to clear the database to the initial state after every case. Here you can find more information:
 
-For Laravel: [https://laravel.com/docs/10.x/database-testing#resetting-the-database-after-each-test](https://laravel.
-com/docs/10.x/database-testing#resetting-the-database-after-each-test)
+For Laravel: [https://laravel.com/docs/10.x/database-testing#resetting-the-database-after-each-test](https://laravel.com/docs/10.x/database-testing#resetting-the-database-after-each-test)
 
 For Symfony: [https://github.com/dmaicher/doctrine-test-bundle](https://github.com/dmaicher/doctrine-test-bundle)
 
