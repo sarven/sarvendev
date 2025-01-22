@@ -276,8 +276,7 @@ Using a basic abstraction layer (Doctrine DBAL or simple Eloquent) gives us simp
 Bear in mind that the hydration based on reflection will always negatively affect performance. It isn’t only the problem of ORMs, we can also find similar problems in serializers using the same approach.
 
 ## EDIT: UPDATE
-Here is the continuation of the article: [https://sarvendev.com/2024/10/poor-performance-of-eloquent-orm-in-comparison-to-doctrine/](https://sarvendev.
-com/2024/10/poor-performance-of-eloquent-orm-in-comparison-to-doctrine/)
+Here is the continuation of the article: [https://sarvendev.com/2024/10/poor-performance-of-eloquent-orm-in-comparison-to-doctrine/](https://sarvendev.com/2024/10/poor-performance-of-eloquent-orm-in-comparison-to-doctrine/)
 
 Read more:
 
