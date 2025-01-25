@@ -3,19 +3,11 @@
   <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1734335");</style>
   <style type="text/css">
     :root {
-      --button-subscribe-bg: #838081;
-      --button-subscribe-text: #ffffff;
-      --button-subscribe-border: #838081;
+      --button-subscribe-bg: var(--main-bg);
+      --button-subscribe-text: var(--sidebar-muted-color);
+      --button-subscribe-border: var(--search-border-color);
       --button-subscribe-hover: #333333;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --button-subscribe-bg: var(--main-bg);
-        --button-subscribe-text: var(--sidebar-muted-color);
-        --button-subscrbe-border: var(--search-border-color);
-        --button-subscrbe-hover: #007bff;
-      }
+      --button-subscribe-text-hover: #ffffff;
     }
 
     /* LOADER */
@@ -559,6 +551,7 @@
     }
     #mlb2-21708395.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
       background-color: var(--button-subscribe-hover) !important;
+      color: var(--button-subscribe-text-hover) !important;
     }
     .ml-subscribe-close {
       width: 30px;
