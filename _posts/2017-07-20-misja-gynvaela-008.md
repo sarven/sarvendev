@@ -3,6 +3,8 @@ title: Misja Gynvaela 008
 date: 2017-07-20
 categories: [Programming, Ctf]
 permalink: /pl/2017/07/misja-gynvaela-008/
+redirect_from:
+  - /2017/07/misja-gynvaela-008/
 ---
 Ostatnio wpadło mi w ręce zadanie podane przez Gynvaela na jednym z ostatnich streamów, które wydało mi się na tyle ciekawe, że postanowiłem je rozwiązać oraz opisać na blogu. Zapraszam więc do dalszego czytania!
 

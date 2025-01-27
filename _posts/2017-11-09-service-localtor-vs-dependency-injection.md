@@ -3,6 +3,8 @@ title: Service locator vs Dependency injection
 date: 2017-11-09
 categories: [Programming, Patterns]
 permalink: /pl/2017/11/service-locator-vs-dependency-injection/
+redirect_from:
+  - /2017/11/service-locator-vs-dependency-injection/
 image:
   path: /assets/img/2017-11-09/featured.png
 ---

@@ -3,6 +3,8 @@ title: Profilowanie i optymalizacja
 date: 2017-07-21
 categories: [Programming]
 permalink: /pl/2017/07/profilowanie-i-optymalizacja/
+redirect_from:
+  - /2017/07/profilowanie-i-optymalizacja/
 image:
   path: /assets/img/2017-07-21/blackfire.png
 ---

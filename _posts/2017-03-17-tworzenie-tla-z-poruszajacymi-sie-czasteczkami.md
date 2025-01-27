@@ -3,6 +3,8 @@ title: Tworzenie tła z poruszającymi się cząsteczkami
 date: 2017-03-17
 categories: [Programming]
 permalink: /pl/2017/03/tworzenie-tla-z-poruszajacymi-sie-czasteczkami/
+redirect_from:
+  - /2017/03/tworzenie-tla-z-poruszajacymi-sie-czasteczkami/
 image:
   path: /assets/img/particles/img.png
 ---

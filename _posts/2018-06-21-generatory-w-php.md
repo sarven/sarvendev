@@ -3,6 +3,8 @@ title: Generatory w php
 date: 2018-06-21
 categories: [Programming, PHP]
 permalink: /pl/2018/06/generatory-w-php/
+redirect_from:
+  - /2018/06/generatory-w-php/
 ---
 Generatory zostały dodane stosunkowo dawno, bo jeszcze w wersji php 5.5. Jednak wydaje się, że są rzadko spotykane w różnych projektach, a może jednak czasem warto mieć świadomość ich istnienia, gdyż idealnie dopasowują się do niektórych problemów.
 

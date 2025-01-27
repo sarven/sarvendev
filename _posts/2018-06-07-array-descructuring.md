@@ -3,6 +3,8 @@ title: Array destructuring
 date: 2018-06-07
 categories: [Programming, PHP]
 permalink: /pl/2018/06/array-destructing-php-7-1/
+redirect_from:
+  - /2018/06/array-destructing-php-7-1/
 ---
 Kiedyś pisałem dosyć dużo kodu w javascript (es6). Wykorzystywałem różne możliwość języka, których później brakowało mi w php. Jedną z nich było tzw. destructuring assignment.
 

@@ -3,6 +3,8 @@ title: SOLID – Interface segregation principle
 date: 2017-08-27
 categories: [Programming, Good practices]
 permalink: /pl/2017/08/4-solid-interface-segregation-principle/
+redirect_from:
+  - /2017/08/4-solid-interface-segregation-principle/
 image:
   path: /assets/img/2017-08-27/featured.png
 ---

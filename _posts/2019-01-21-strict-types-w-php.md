@@ -3,6 +3,8 @@ title: Strict types w php
 date: 2019-01-21
 categories: [Programming, PHP]
 permalink: /pl/2019/01/strict-types-w-php/
+redirect_from:
+  - /2019/01/strict-types-w-php/
 ---
 Od wersji php 7.0 mamy możliwość używania deklaracji typów w parametrach funkcji, metod, a od 7.1 również możemy określić typ wartości zwracanej. Jednak okazuje się, że nie do końca działa to w sposób jaki moglibyśmy oczekiwać, a często wartości są po prostu w miarę możliwości konwertowane do pożądanego typu. Natomiast konwersja często może być efektem niepożądanym, dlatego warto wiedzieć co można z tym zrobić.
 

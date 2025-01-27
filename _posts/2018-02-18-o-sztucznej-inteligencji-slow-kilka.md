@@ -3,6 +3,8 @@ title: O sztucznej inteligencji słów kilka
 date: 2018-02-18
 categories: [Interesting]
 permalink: /pl/2018/02/o-sztucznej-inteligencji-slow/
+redirect_from:
+  - /2018/02/o-sztucznej-inteligencji-slow/
 image:
   path: /assets/img/2018-02-18/featured.png
 ---

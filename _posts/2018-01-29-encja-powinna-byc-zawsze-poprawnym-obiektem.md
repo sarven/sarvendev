@@ -3,6 +3,8 @@ title: Encja powinna być zawsze poprawnym obiektem
 date: 2018-01-29
 categories: [Programming, Good practices]
 permalink: /pl/2018/01/encja-byc-zawsze-poprawnym-obiektem/
+redirect_from:
+  - /2018/01/encja-byc-zawsze-poprawnym-obiektem/
 ---
 Bardzo często w projektach z użyciem Doctrine, encja wygląda w ten sposób, że zrobione jest mapowanie odpowiednich pól, oraz do każdego pola utworzone są gettery oraz settery. Dodatkowo do każdego pola mamy odpowiednie adnotacje walidacji, a formularze walidowane są na encji. Czy to na pewno jest dobre podejście?
 ```php

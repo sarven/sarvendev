@@ -3,6 +3,8 @@ title: SOLID – Open/closed principle
 date: 2017-08-20
 categories: [Programming, Good practices]
 permalink: /pl/2017/08/2-solid-openclosed-principle/
+redirect_from:
+  - /2017/08/2-solid-openclosed-principle/
 image:
   path: /assets/img/2017-08-20/featured.png
 ---

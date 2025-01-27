@@ -3,6 +3,8 @@ title: Problematyczna sekunda
 date: 2019-01-07
 categories: [Interesting]
 permalink: /pl/2019/01/problematyczna-sekunda/
+redirect_from:
+  - /2019/01/problematyczna-sekunda/
 image:
   path: /assets/img/2019-01-07/featured.png
 ---

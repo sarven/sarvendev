@@ -3,6 +3,8 @@ title: Jak się rozwijać w kierunku IT i nie zwariować?
 date: 2017-06-25
 categories: [Programming]
 permalink: /pl/2017/06/jak-sie-rozwijac-w-kierunku-it-i-nie-zwariowac/
+redirect_from:
+  - /2017/06/jak-sie-rozwijac-w-kierunku-it-i-nie-zwariowac/
 image:
   path: /assets/img/2017-06-25/growth.png
 ---

@@ -3,6 +3,8 @@ title: Kompozycja ponad dziedziczenie
 date: 2017-10-01
 categories: [Programming, Good practices]
 permalink: /pl/2017/10/kompozycja-ponad-dziedziczenie/
+redirect_from:
+  - /2017/10/kompozycja-ponad-dziedziczenie/
 image:
   path: /assets/img/2017-10-01/featured.png
 ---

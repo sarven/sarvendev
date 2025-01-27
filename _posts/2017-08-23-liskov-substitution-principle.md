@@ -3,6 +3,8 @@ title: SOLID – Liskov substitution principle
 date: 2017-08-23
 categories: [Programming, Good practices]
 permalink: /pl/2017/08/3-solid-liskov-substitution-principle/
+redirect_from:
+  - /2017/08/3-solid-liskov-substitution-principle/
 image:
   path: /assets/img/2017-08-23/featured.png
 ---

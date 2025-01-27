@@ -3,6 +3,8 @@ title: SOLID – Dependency inversion principle
 date: 2017-08-31
 categories: [Programming, Good practices]
 permalink: /pl/2017/08/5-solid-dependency-inversion-principle/
+redirect_from:
+  - /2017/08/5-solid-dependency-inversion-principle/
 image:
   path: /assets/img/2017-08-31/featured.png
 ---
