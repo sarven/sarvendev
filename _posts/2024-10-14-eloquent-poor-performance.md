@@ -119,3 +119,4 @@ On average Doctrine is 10 ms faster per request.
 ## Conclusion
 - the best way is to use read models especially if you read a lot of data from the database: [Read more](https://sarvendev.com/2024/10/unlocking-orm-performance-the-essential-role-of-read-models/)
 - keep in mind that reading data will be slower in Eloquent than in Doctrine if you use heavy ORM models to read data
+

@@ -191,3 +191,4 @@ needs to be defined in providers, [Read more here](https://sarvendev.com/2023/04
 
 ## Summary
 Many factors impact our decision in choosing the right framework for our application. This time, I compared the performance of containers. Bearing in mind the performance of these two container implementations, I think that Symfony is a much better choice for a modular monolith architecture. For smaller applications, the difference won’t be as noticeable as it is for larger ones, but if you strive for better performance, you should thoroughly consider your decision.
+

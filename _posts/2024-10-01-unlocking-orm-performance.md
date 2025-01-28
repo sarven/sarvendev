@@ -284,3 +284,4 @@ There is a good set of best practices for Doctrine: [https://www.doctrine-projec
 2/reference/best-practices.html)
 
 My article about DDD and ORMs: [https://sarvendev.com/2022/10/an-absolutely-clean-domain-or-just-common-sense/](https://sarvendev.com/2022/10/an-absolutely-clean-domain-or-just-common-sense/)
+

@@ -81,3 +81,4 @@ Additionally, we refactored a big model to smaller ones, to improve the overall 
 **Read more:** 
 - [MySQL – How to Minimize and Handle Deadlocks](https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlocks-handling.html)
 - [InnoDB – Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
+
