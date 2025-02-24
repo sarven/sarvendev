@@ -1,5 +1,5 @@
 ---
-title: Draft - The goal of good practices
+title: The goal of good practices
 date: 2025-02-15
 categories: [Programming, Good practices]
 ---
