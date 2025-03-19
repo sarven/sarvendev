@@ -284,6 +284,127 @@ final class HttpUsersClientTest extends TestCase
 }
 ```
 
+## Generated contracts
+
+## Contract broker
+
+## Go Backend
+In the Go backend we have a simple http endpoint that returns user details. 
+
+```go
+type UserHandler struct {
+	Repo repository.UserRepository
+}
+
+func NewUserHandler(repo repository.UserRepository) *UserHandler {
+	return &UserHandler{Repo: repo}
+}
+
+func (h *UserHandler) GetUser(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	id, err := strconv.Atoi(vars["id"])
+	if err != nil {
+		http.Error(w, "Invalid user ID", http.StatusBadRequest)
+		return
+	}
+
+	user, err := h.Repo.GetUserByID(r.Context(), id)
+
+	w.Header().Set("Content-Type", "application/json")
+
+	if err != nil {
+		http.Error(w, fmt.Sprintf("User %d not found", id), http.StatusNotFound)
+		return
+	}
+
+	json.NewEncoder(w).Encode(user)
+}
+```
+
+The integration test for the GetUser endpoint is like the following:
+
+```go
+func TestGetUser(t *testing.T) {
+	// Given
+	user := fixtures.GivenUser("John Doe", "john.doe@example.com")
+
+	// When
+	router := server.SetupRouter()
+	req, _ := http.NewRequest("GET", fmt.Sprintf("/api/users/%d", user.ID), nil)
+	rr := httptest.NewRecorder()
+	router.ServeHTTP(rr, req)
+
+	// Then
+	if http.StatusOK != rr.Code {
+		t.Errorf("Expected response code %d. Got %d\n", http.StatusOK, rr.Code)
+	}
+
+	var returnedUser model.User
+	err := json.NewDecoder(rr.Body).Decode(&returnedUser)
+	if err != nil {
+		t.Fatalf("Failed to decode response body: %v", err)
+	}
+
+	if returnedUser.Name != "John Doe" || returnedUser.Email != "john.doe@example.com" {
+		t.Errorf("Expected user %v. Got %v\n", user, returnedUser)
+	}
+}
+```
+
+The contract test is now different, because it's the provider test. 
+This test uses real database, but actually it's not necessary, as we can use the in memory database, as the real database 
+should be tested by the integration tests. 
+
+Steps in the test:
+1. Create a user in the database
+2. Start the server
+3. Fetch the contracts from the broker
+4. Send requests from defined contracts to the server
+5. Verify if the response is as expected in the contract
+
+```go
+func startProvider() {
+	server.SetupServer(8081)
+}
+
+func TestServerPact_Verification(t *testing.T) {
+	fixtures.GivenUser("John Doe", "john.doe@example.com")
+
+	go startProvider()
+
+	var dir, _ = os.Getwd()
+	var pactDir = fmt.Sprintf("%s/../../pacts", dir)
+	var logDir = fmt.Sprintf("%s/log", dir)
+
+	pact := &dsl.Pact{
+		Provider:                 "Backend",
+		LogDir:                   logDir,
+		PactDir:                  pactDir,
+		DisableToolValidityCheck: true,
+	}
+
+	brokerURL := os.Getenv("PACT_BROKER_URL")
+	brokerToken := os.Getenv("PACT_BROKER_TOKEN")
+	providerVersion := os.Getenv("PROVIDER_VERSION")
+
+	if brokerURL == "" || brokerToken == "" || providerVersion == "" {
+		t.Fatal("PACT_BROKER_URL, PACT_BROKER_TOKEN, or PROVIDER_VERSION is not set")
+	}
+
+	_, err := pact.VerifyProvider(t, types.VerifyRequest{
+		ProviderBaseURL:            "http://127.0.0.1:8081",
+		BrokerURL:                  brokerURL,
+		BrokerToken:                brokerToken,
+		PublishVerificationResults: true,
+		ProviderVersion:            providerVersion,
+	})
+
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+```
+
 ## Breaking change in provider contract
 
 ## Using invalid field in consumer
