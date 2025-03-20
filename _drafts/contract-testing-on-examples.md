@@ -483,14 +483,12 @@ Contract broker is a service that stores the contracts, and allows to verify the
 
 In the Pactflow I can see all applications:
 
-![Pactflow](/assets/img/2025-03-24/pactflow.png)
+![Pactflow](/assets/img/2025-03-24/pactflow-applications.png)
 ![Applications relations](/assets/img/2025-03-24/applications-relations.png)
 
 And the contracts and verification status:
 
 ![Contracts](/assets/img/2025-03-24/contracts-and-verification-status.png)
-
-
 
 ## Breaking change in provider contract
 
@@ -498,7 +496,8 @@ And the contracts and verification status:
 
 ??
 
--- github repository
+## Github repository with all examples
+[Github - Contract testing playground](https://github.com/sarven/contract-testing-playground)
 
 ## Summary
 - difference comparing to the integration test
