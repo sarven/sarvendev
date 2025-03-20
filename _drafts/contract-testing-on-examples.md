@@ -284,10 +284,6 @@ final class HttpUsersClientTest extends TestCase
 }
 ```
 
-## Generated contracts
-
-## Contract broker
-
 ## Go Backend
 In the Go backend we have a simple http endpoint that returns user details. 
 
@@ -404,6 +400,97 @@ func TestServerPact_Verification(t *testing.T) {
 	}
 }
 ```
+
+## Setting up CI/CD pipeline
+
+
+
+## Generated contracts
+
+Here is an example of the generated contract (PHP Backend) downloaded from the pact broker:
+```json
+{
+  "consumer": {
+    "name": "PHPBackendConsumer"
+  },
+  "interactions": [
+    {
+      "_id": "79c1cb63c7ddf26e527d175e94e9a81c34842278",
+      "description": "A request for user details",
+      "providerStates": [
+        {
+          "name": "A user with ID 1 exists"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/users/1"
+      },
+      "response": {
+        "body": {
+          "email": "john.doe@example.com",
+          "id": 1
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$.email": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.26",
+      "mockserver": "1.2.11",
+      "models": "1.2.7"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "Backend"
+  }
+}
+```
+
+Nothing special, just the JSON representation of what was defined in the test.
+
+## Contract broker
+
+Contract broker is a service that stores the contracts, and allows to verify the contracts between services. I'm using the trial version of [Pactflow - API Hub](https://swagger.io/api-hub/contract-testing/), but it's also possible to use self-hosted
+[Pact Broker](https://github.com/pact-foundation/pact_broker).
+
+In the Pactflow I can see all applications:
+
+![Pactflow](/assets/img/2025-03-24/pactflow.png)
+![Applications relations](/assets/img/2025-03-24/applications-relations.png)
+
+And the contracts and verification status:
+
+![Contracts](/assets/img/2025-03-24/contracts-and-verification-status.png)
+
+
 
 ## Breaking change in provider contract
 
