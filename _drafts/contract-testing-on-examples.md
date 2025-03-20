@@ -402,7 +402,59 @@ func TestServerPact_Verification(t *testing.T) {
 ```
 
 ## Setting up CI/CD pipeline
+Contract tests needs to be integrated into the CI/CD pipeline. Four steps are needed:
+1. Run the contract tests
+2. Publish the contracts to the broker
+3. Check if it's possible to release the new version of the service
+4. Record released version in the broker to know which version is currently running
 
+### Consumer jobs - PHP Backend
+Makefile config to run contract tests:
+```makefile
+test-contract:
+	docker compose exec app vendor/bin/phpunit --config=phpunit.xml.dist --testsuite "Contract Tests"
+```
+
+Run contract tests and publish the contracts to the broker:
+```yaml
+- name: Run Pact contract tests
+  working-directory: php-consumer-backend
+  run: make test-contract
+
+- name: Publish Pact files
+  uses: pactflow/actions/publish-pact-files@v2
+  with:
+    pactfiles: php-consumer-backend/pacts/*.json
+    broker_url: ${{ secrets.PACT_BROKER_URL }}
+    token: ${{ secrets.PACT_BROKER_TOKEN }}
+```
+
+"Can I deploy" checks if the new version of the service was compatible with all contracts and can be released:
+```yaml
+- name: Can I deploy
+  uses: pactflow/actions/can-i-deploy@v2
+  with:
+    to_environment: "production"
+    application_name: "PHPBackendConsumer"
+    broker_url: ${{ secrets.PACT_BROKER_URL }}
+    token: ${{ secrets.PACT_BROKER_TOKEN }}
+```
+
+Record the released version in the broker:
+```yaml
+- name: Record deployment
+  uses: pactflow/actions/record-deployment@v2
+  with:
+    environment: "production"
+    application_name: "PHPBackendConsumer"
+    broker_url: ${{ secrets.PACT_BROKER_URL }}
+    token: ${{ secrets.PACT_BROKER_TOKEN }}
+```
+
+Jobs for React consumer are similar, so I won't describe them here. At the end of the article I will provide a link 
+to the full repository with all examples.
+
+### Provider jobs - Go Backend
 
 
 ## Generated contracts
