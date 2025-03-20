@@ -455,7 +455,50 @@ Jobs for React consumer are similar, so I won't describe them here. At the end o
 to the full repository with all examples.
 
 ### Provider jobs - Go Backend
+For the provider, the list of steps is shorter, because we don't need to publish the contracts, only to verify them.
+The list is as follows:
+1. Run the contract tests
+2. Check if the new version of the service is compatible with all contracts
+3. Record the released version in the broker
 
+```makefile
+test-contract:
+	docker compose exec -e PACT_BROKER_URL=$$PACT_BROKER_URL -e PACT_BROKER_TOKEN=$$PACT_BROKER_TOKEN -e PROVIDER_VERSION=$$PROVIDER_VERSION app go test ./tests/pact/...
+```
+
+Run the contract tests:
+```yaml
+- name: Run contract tests
+  working-directory: go-provider-backend
+  run: make test-contract
+  env:
+    PACT_BROKER_URL: ${{ secrets.PACT_BROKER_URL }}
+    PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
+    PROVIDER_VERSION: ${{ steps.get_commit.outputs.commit_hash }}
+```
+This job gets the contracts from the broker and verifies the provider against them. 
+
+Check if the new version of the service is compatible with all contracts:
+```yaml
+- name: Can I deploy
+  uses: pactflow/actions/can-i-deploy@v2
+  with:
+    to_environment: "production"
+    application_name: "Backend"
+    broker_url: ${{ secrets.PACT_BROKER_URL }}
+    token: ${{ secrets.PACT_BROKER_TOKEN }}
+```
+
+Record the released version in the broker:
+```yaml
+- name: Record deployment
+  uses: pactflow/actions/record-deployment@v2
+  with:
+    environment: "production"
+    application_name: "Backend"
+    broker_url: ${{ secrets.PACT_BROKER_URL }}
+    token: ${{ secrets.PACT_BROKER_TOKEN }}
+```
 
 ## Generated contracts
 
