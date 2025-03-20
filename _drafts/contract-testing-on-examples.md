@@ -612,7 +612,12 @@ follows:
 Only the frontend app is using this field. Thanks to the contract tests, we didn't release the new version, and we 
 got feedback quickly checking tests only for one app, without setting up the whole system to run e2e, or without 
 asking many teams if they're using this field. Now it's clear, if we want to remove this field, we need to ask the 
-team responsible for the frontend app to stop using it. 
+team responsible for the frontend app to stop using it.
+
+Here is the full change I made in the Go backend: [commit](https://github.com/sarven/contract-testing-playground/commit/b3e4f5981c496dd3f6503b8c767ef4518b3a819e)
+
+The contract tests have another advantage, instead of implementing that change I can just go to the broker, check 
+which apps are using that service I want to change and then verify if the field I want to remove is used by any app.
 
 ## Using invalid field in consumer
 
