@@ -587,6 +587,33 @@ And the contracts and verification status:
 
 ## Breaking change in provider contract
 
+![Green build](/assets/img/2025-03-24/github-actions-green.png)
+Now, the tests for the provider are passing. The endpoint returns the response as follows:
+```json
+{
+  "id": 1,
+  "name": "John Doe",
+  "email": "john.doe@example.com"
+}
+```
+Let's say that for our team, the field name seems like unused, and we want to simplify the response, and remove the 
+name. So the response will be:
+```json
+{
+  "id": 1,
+  "email": "john.doe@example.com"
+}
+```
+The code was changed, the pipeline was run and failed on step with contract tests. The result in the broker is as 
+follows:
+
+![Contracts failed](/assets/img/2025-03-24/contracts-red.png)
+
+Only the frontend app is using this field. Thanks to the contract tests, we didn't release the new version, and we 
+got feedback quickly checking tests only for one app, without setting up the whole system to run e2e, or without 
+asking many teams if they're using this field. Now it's clear, if we want to remove this field, we need to ask the 
+team responsible for the frontend app to stop using it. 
+
 ## Using invalid field in consumer
 
 ??
@@ -597,4 +624,5 @@ And the contracts and verification status:
 ## Summary
 - difference comparing to the integration test
 - recording real requests, if someone skips using tested client etc. still can cause a problem
-
+- more scalalable than e2e tests, independence of services
+- no need to ask anyone if something can be changed, just run the tests or check contracts
