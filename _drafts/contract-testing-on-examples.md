@@ -451,6 +451,12 @@ Record the released version in the broker:
     token: ${{ secrets.PACT_BROKER_TOKEN }}
 ```
 
+After publishing the contracts to the broker, the provider needs to run contract tests to verify if the new consumer 
+version is compatible with the version of the provider on the production. It's done by the webhook, 
+which is configured in the broker and trigger the specific GitHub's workflow.
+
+![Webhook](/assets/img/2025-03-24/webhook.png)
+
 Jobs for React consumer are similar, so I won't describe them here. At the end of the article I will provide a link 
 to the full repository with all examples.
 
