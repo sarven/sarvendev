@@ -620,7 +620,8 @@ got feedback quickly checking tests only for one app, without setting up the who
 asking many teams if they're using this field. Now it's clear, if we want to remove this field, we need to ask the 
 team responsible for the frontend app to stop using it.
 
-Here is the full change I made in the Go backend: [commit](https://github.com/sarven/contract-testing-playground/commit/b3e4f5981c496dd3f6503b8c767ef4518b3a819e)
+Here is the full change I made in the Go backend: 
+[commit](https://github.com/sarven/contract-testing-playground/commit/b3e4f5981c496dd3f6503b8c767ef4518b3a819e)
 
 The contract tests have another advantage, instead of implementing that change I can just go to the broker, check 
 which apps are using that service I want to change and then verify if the field I want to remove is used by any app.
@@ -643,7 +644,8 @@ The result can be checked in the broker:
 [Github - Contract testing playground](https://github.com/sarven/contract-testing-playground)
 
 ## Summary
-- difference comparing to the integration test
-- recording real requests, if someone skips using tested client etc. still can cause a problem
-- more scalalable than e2e tests, independence of services
-- no need to ask anyone if something can be changed, just run the tests or check contracts
+In this article I presented a simple example of how to use contract testing for REST API. The same approach can be 
+used for gRPC, messaging etc. The goal of microservices is to have independent services, and contract testing is a 
+way to achieve that, we can test every service separately, and verify the communication between services. This type 
+of tests helps us find if we can change the API without breaking the consumers, we can verify manually how our API 
+is used by others, and we have a safety net that we didn't break anything.
