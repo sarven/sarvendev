@@ -1,6 +1,6 @@
 ---
 title: Contract Testing on Examples
-date: 2025-03-17
+date: 2025-03-24
 categories: [Programming, Testing]
 ---
 
