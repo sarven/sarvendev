@@ -424,8 +424,8 @@ Run contract tests and publish the contracts to the broker:
   uses: pactflow/actions/publish-pact-files@v2
   with:
     pactfiles: php-consumer-backend/pacts/*.json
-    broker_url: \${{ secrets.PACT_BROKER_URL }}\
-    token: \${{ secrets.PACT_BROKER_TOKEN }}\
+    broker_url: {% raw %}${{ secrets.PACT_BROKER_URL }}{% endraw %}
+    token: {% raw %}${{ secrets.PACT_BROKER_TOKEN }}{% endraw %}
 ```
 
 "Can I deploy" checks if the new version of the service is compatible with all contracts and can be released:
@@ -435,8 +435,8 @@ Run contract tests and publish the contracts to the broker:
   with:
     to_environment: "production"
     application_name: "PHPBackendConsumer"
-    broker_url: \${{ secrets.PACT_BROKER_URL }}\
-    token: \${{ secrets.PACT_BROKER_TOKEN }}\
+    broker_url: {% raw %}${{ secrets.PACT_BROKER_URL }}{% endraw %}
+    token: {% raw %}${{ secrets.PACT_BROKER_TOKEN }}{% endraw %}
 ```
 
 Record the released version in the broker:
@@ -446,8 +446,8 @@ Record the released version in the broker:
   with:
     environment: "production"
     application_name: "PHPBackendConsumer"
-    broker_url: \${{ secrets.PACT_BROKER_URL }}\
-    token: \${{ secrets.PACT_BROKER_TOKEN }}\
+    broker_url: {% raw %}${{ secrets.PACT_BROKER_URL }}{% endraw %}
+    token: {% raw %}${{ secrets.PACT_BROKER_TOKEN }}{% endraw %}
 ```
 
 After publishing the contracts to the broker, the provider needs to run contract tests to verify if the new consumer
@@ -466,6 +466,7 @@ The list is as follows:
 2. Check if the new version of the service is compatible with all contracts
 3. Record the released version in the broker
 
+Makefile config to run contract tests for provider:
 ```makefile
 test-contract:
 	docker compose exec -e PACT_BROKER_URL=$$PACT_BROKER_URL -e PACT_BROKER_TOKEN=$$PACT_BROKER_TOKEN -e PROVIDER_VERSION=$$PROVIDER_VERSION app go test ./tests/pact/...
@@ -477,9 +478,9 @@ Run the contract tests:
   working-directory: go-provider-backend
   run: make test-contract
   env:
-    PACT_BROKER_URL: \${{ secrets.PACT_BROKER_URL }}\
-    PACT_BROKER_TOKEN: \${{ secrets.PACT_BROKER_TOKEN }}\
-    PROVIDER_VERSION: \${{ steps.get_commit.outputs.commit_hash }}\
+    PACT_BROKER_URL: {% raw %}${{ secrets.PACT_BROKER_URL }}{% endraw %}
+    PACT_BROKER_TOKEN: {% raw %}${{ secrets.PACT_BROKER_TOKEN }}{% endraw %}
+    PROVIDER_VERSION: {% raw %}${{ steps.get_commit.outputs.commit_hash }}{% endraw %}
 ```
 This job gets the contracts from the broker and verifies the provider against them. 
 
@@ -490,8 +491,8 @@ Check if the new version of the service is compatible with all contracts:
   with:
     to_environment: "production"
     application_name: "Backend"
-    broker_url: \${{ secrets.PACT_BROKER_URL }}\
-    token: \${{ secrets.PACT_BROKER_TOKEN }}\
+    broker_url: {% raw %}${{ secrets.PACT_BROKER_URL }}{% endraw %}
+    token: {% raw %}${{ secrets.PACT_BROKER_TOKEN }}{% endraw %}
 ```
 
 Record the released version in the broker:
@@ -501,8 +502,8 @@ Record the released version in the broker:
   with:
     environment: "production"
     application_name: "Backend"
-    broker_url: \${{ secrets.PACT_BROKER_URL }}\
-    token: \${{ secrets.PACT_BROKER_TOKEN }}\
+    broker_url: {% raw %}${{ secrets.PACT_BROKER_URL }}{% endraw %}
+    token: {% raw %}${{ secrets.PACT_BROKER_TOKEN }}{% endraw %}
 ```
 
 ## Generated contracts
