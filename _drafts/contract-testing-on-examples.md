@@ -621,7 +621,17 @@ which apps are using that service I want to change and then verify if the field 
 
 ## Using invalid field in consumer
 
-??
+Now let's say that we made a mistake in the PHP backend app, and we're using the field `emaill` instead of `email`.
+
+After publishing the contracts to the broker, the webhook will trigger the verification of the provider, and the 
+verification will fail. When we'll start release of the new version of the PHP backend, the pipeline will fail on 
+the can-i-deploy step. The result in the broker is as follows:
+```
+There is no verified pact between version 8ebc9a5542689840c8e8ff35b4472119e04e5082 of PHPBackendConsumer and the version of Backend currently in production (a14aa442210afd9e8a861bee21670350aac211a8)
+```
+
+The result can be checked in the broker:
+![Invalid field](/assets/img/2025-03-24/invalid-field.png)
 
 ## Github repository with all examples
 [Github - Contract testing playground](https://github.com/sarven/contract-testing-playground)
