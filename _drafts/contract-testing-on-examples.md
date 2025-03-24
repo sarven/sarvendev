@@ -4,34 +4,32 @@ date: 2025-03-17
 categories: [Programming, Testing]
 ---
 
-Many companies are using microservices architecture. It has many advantages, but it also has some disadvantages.
-One of them is that the whole system is more complicated, and e2e testing could become not scalable approach. In the case 
-of a few services, it is not a problem, as we can start all services and run e2e tests, but having tens or more
-services creates a problem, as we need to start all services, and it could take a lot of time, is not reliable, and debugging
-failures could be hard. 
+Many companies use a microservices architecture. It has many advantages, but it also has some disadvantages.
+One of them is that the whole system becomes more complex, and end-to-end (E2E) testing may not be a scalable approach. 
+In the case of a few services, this is not a problem, as we can start all services and run E2E tests. 
+However, when dealing with tens or more services, this becomes an issue because starting all services can take a lot of time, is unreliable, 
+and makes debugging failures difficult.
 
-Instead of e2e tests, we can test every service separately, and use contract testing to verify the communication 
-between services.
+Instead of relying on E2E tests, we can test each service separately and use contract testing to verify communication between services.
 
 ## What is contract testing?
 
 ![Contract testing](/assets/img/2025-03-24/contract-testing.png)
 
-Basically, in contract testing we have two sides: provider and consumer. 
-Provider is a service that provides some API, and consumer is a service that uses this API. In the consumer tests we're
-defining the contract, what is the request, fields and what is the response, and then the production code is run
-against mocked provider, as the result we have a contract. Then in the provider tests, the same contract is used to
+Basically, contract testing has two sides: provider and consumer.
+Provider is a service that provides some API, and consumer is a service that uses this API. In the consumer tests, we define the contract, 
+what is the request, the fields, and what is the response, and then the production code is run
+against a mocked provider, as a result, we have a contract. Then in the provider tests, the same contract is used to
 verify if the provider is working correctly, so we send the request defined by the consumer and check if the response
-is as defined also in the contract. The type of communication doesn't matter, the tests could be written for 
-REST API, gRPC, messaging etc. 
+is as defined also in the contract. The type of communication doesn't matter, the tests could be written for
+REST API, gRPC, messaging, etc.
 
-In contract tests we don't test the behavior, only the contract, so we test if the request and response are as expected, 
-there are required fields, and types are correct. Everything that can break the consumer 
-of the provided API should be verified. However, we don't test the business logic, as it should be tested 
-in the unit or integration tests, so we don't test e.g. if something was correctly saved in the database. 
+In contract tests, we don't test the behavior, only the contract, so we test if the request and response are as expected,
+if there are required fields, and types are correct. Everything that can break the consumer
+of the provided API should be verified. However, we don't test the business logic, as it should be covered by unit or integration tests. 
+For example, we don’t check whether something was correctly saved in the database.
 
-Comparing to e2e tests, contract tests are much faster, they are run only for one service, failures are clear, and they 
-are more reliable. 
+Compared to E2E tests, contract tests are much faster, run only for a single service, have clear failure reasons, and are more reliable.
 
 ## Example
 
@@ -123,11 +121,11 @@ describe('UserDetails component', () => {
 })
 ```
 
-The contract test is implemented by using the method getUserDetails, there is a definition what is the expected requested
-and what a response is returned by the backend service. It's important to note that it's a real request to the 
-server run on 127.0.0.1:1234. This server is responsible to verify if the request is as expected in the test, and 
-return the response defined in the test. Using `Pact.Matchers.somethingLike` allows defining flexible expectations,
-so the test will pass even if id and name are different. In the test we also check if the response was properly decoded, 
+The contract test is implemented by using the method getUserDetails, there is a definition of what is the expected request
+and what response is returned by the backend service. It's important to note that it's a real request to the
+server run on 127.0.0.1:1234. This server is responsible for verifying if the request is as expected in the test, and
+returning the response defined in the test. Using `Pact.Matchers.somethingLike` allows defining flexible expectations,
+so the test will pass even if the id and name are different. In the test, we also check if the response was properly decoded,
 and proper object was returned for the http client.
 
 ```tsx
@@ -179,7 +177,7 @@ describe("User API Contract Test", () => {
 ```
 
 ## PHP Backend
-In the PHP backend we have a simple http client that fetches user details from the go backend service.
+In the PHP backend, we have a simple http client that fetches user details from the go backend service.
 
 ```php
 interface UsersClientInterface
@@ -209,7 +207,7 @@ final readonly class HttpUsersClient implements UsersClientInterface
 }
 ```
 
-In tests verifying the functionality we can use the in memory http client:
+In tests verifying the functionality we can use the in memory HTTP client:
 
 ```php
 final class InMemoryUsersClient implements UsersClientInterface
@@ -285,7 +283,7 @@ final class HttpUsersClientTest extends TestCase
 ```
 
 ## Go Backend
-In the Go backend we have a simple http endpoint that returns user details. 
+In the Go backend, we have a simple http endpoint that returns user details. 
 
 ```go
 type UserHandler struct {
@@ -347,9 +345,9 @@ func TestGetUser(t *testing.T) {
 }
 ```
 
-The contract test is now different, because it's the provider test. 
-This test uses real database, but actually it's not necessary, as we can use the in memory database, as the real database 
-should be tested by the integration tests. 
+The contract test is now different because it's the provider test.
+This test uses a real database, but actually, it's not necessary, as we can use the in-memory database, as the real database
+should be tested by the integration tests.
 
 Steps in the test:
 1. Create a user in the database
@@ -402,14 +400,15 @@ func TestServerPact_Verification(t *testing.T) {
 ```
 
 ## Setting up CI/CD pipeline
-Contract tests needs to be integrated into the CI/CD pipeline. Four steps are needed:
+Contract tests need to be integrated into the CI/CD pipeline. Four steps are needed:
 1. Run the contract tests
 2. Publish the contracts to the broker
 3. Check if it's possible to release the new version of the service
-4. Record released version in the broker to know which version is currently running
+4. Record the released version in the broker to know which version is currently running
 
 ### Consumer jobs - PHP Backend
 Makefile config to run contract tests:
+
 ```makefile
 test-contract:
 	docker compose exec app vendor/bin/phpunit --config=phpunit.xml.dist --testsuite "Contract Tests"
@@ -429,7 +428,7 @@ Run contract tests and publish the contracts to the broker:
     token: ${{ secrets.PACT_BROKER_TOKEN }}
 ```
 
-"Can I deploy" checks if the new version of the service was compatible with all contracts and can be released:
+"Can I deploy" checks if the new version of the service is compatible with all contracts and can be released:
 ```yaml
 - name: Can I deploy
   uses: pactflow/actions/can-i-deploy@v2
@@ -451,13 +450,13 @@ Record the released version in the broker:
     token: ${{ secrets.PACT_BROKER_TOKEN }}
 ```
 
-After publishing the contracts to the broker, the provider needs to run contract tests to verify if the new consumer 
-version is compatible with the version of the provider on the production. It's done by the webhook, 
-which is configured in the broker and trigger the specific GitHub's workflow.
+After publishing the contracts to the broker, the provider needs to run contract tests to verify if the new consumer
+version is compatible with the version of the provider on production. It's done by the webhook,
+which is configured in the broker and triggers the specific GitHub workflow.
 
 ![Webhook](/assets/img/2025-03-24/webhook.png)
 
-Jobs for React consumer are similar, so I won't describe them here. At the end of the article I will provide a link 
+Jobs for React consumer are similar, so I won't describe them here. At the end of the article, I will provide a link
 to the full repository with all examples.
 
 ### Provider jobs - Go Backend
@@ -579,7 +578,8 @@ Nothing special, just the JSON representation of what was defined in the test.
 
 ## Contract broker
 
-Contract broker is a service that stores the contracts, and allows to verify the contracts between services. I'm using the trial version of [Pactflow - API Hub](https://swagger.io/api-hub/contract-testing/), but it's also possible to use self-hosted
+A contract broker is a service that stores the contracts, and allows to verify the contracts between services. I'm 
+using the trial version of [Pactflow - API Hub](https://swagger.io/api-hub/contract-testing/), but it's also possible to use self-hosted
 [Pact Broker](https://github.com/pact-foundation/pact_broker).
 
 In the Pactflow I can see all applications:
@@ -602,7 +602,7 @@ Now, the tests for the provider are passing. The endpoint returns the response a
   "email": "john.doe@example.com"
 }
 ```
-Let's say that for our team, the field name seems like unused, and we want to simplify the response, and remove the 
+Let's say that for our team, the field name seems unused, and we want to simplify the response, and remove the 
 name. So the response will be:
 ```json
 {
@@ -610,14 +610,14 @@ name. So the response will be:
   "email": "john.doe@example.com"
 }
 ```
-The code was changed, the pipeline was run and failed on step with contract tests. The result in the broker is as 
+The code was changed, the pipeline was run and failed on the step with contract tests. The result in the broker is as 
 follows:
 
 ![Contracts failed](/assets/img/2025-03-24/contracts-red.png)
 
 Only the frontend app is using this field. Thanks to the contract tests, we didn't release the new version, and we 
 got feedback quickly checking tests only for one app, without setting up the whole system to run e2e, or without 
-asking many teams if they're using this field. Now it's clear, if we want to remove this field, we need to ask the 
+asking many teams if they're using this field. Now it's clear, that if we want to remove this field, we need to ask the 
 team responsible for the frontend app to stop using it.
 
 Here is the full change I made in the Go backend: 
@@ -631,7 +631,7 @@ which apps are using that service I want to change and then verify if the field 
 Now let's say that we made a mistake in the PHP backend app, and we're using the field `emaill` instead of `email`.
 
 After publishing the contracts to the broker, the webhook will trigger the verification of the provider, and the 
-verification will fail. When we'll start release of the new version of the PHP backend, the pipeline will fail on 
+verification will fail. When we start the release of the new version of the PHP backend, the pipeline will fail on 
 the can-i-deploy step. The result in the broker is as follows:
 ```
 There is no verified pact between version 8ebc9a5542689840c8e8ff35b4472119e04e5082 of PHPBackendConsumer and the version of Backend currently in production (a14aa442210afd9e8a861bee21670350aac211a8)
@@ -644,8 +644,8 @@ The result can be checked in the broker:
 [Github - Contract testing playground](https://github.com/sarven/contract-testing-playground)
 
 ## Summary
-In this article I presented a simple example of how to use contract testing for REST API. The same approach can be 
-used for gRPC, messaging etc. The goal of microservices is to have independent services, and contract testing is a 
+In this article, I presented a simple example of how to use contract testing for REST API. The same approach can be 
+used for gRPC, messaging, etc. The goal of microservices is to have independent services, and contract testing is a 
 way to achieve that, we can test every service separately, and verify the communication between services. This type 
 of tests helps us find if we can change the API without breaking the consumers, we can verify manually how our API 
 is used by others, and we have a safety net that we didn't break anything.
