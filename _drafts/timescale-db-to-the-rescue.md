@@ -151,8 +151,20 @@ CALL refresh_continuous_aggregate('hourly_agent_stats', '2024-01-01', '2025-03-2
 
 It takes some time, and probably on the production  it would be better to do it incrementally e.g. per day.
 
-TODO: How it looks in the database:
+How it looks in the database:
 
+| hour                | agent_id | event_type        | occurrences |
+|---------------------|----------|-------------------|-------------|
+| 2024-01-01 00:00:00 | 1        | triggered         | 1000        |
+| 2024-01-01 00:00:00 | 1        | response_generated| 2000        |
+| 2024-01-01 00:00:00 | 2        | triggered         | 1500        |
+| 2024-01-01 00:00:00 | 2        | response_generated| 2500        |
+| 2024-01-01 01:00:00 | 1        | triggered         | 1200        |
+| 2024-01-01 01:00:00 | 1        | response_generated| 2200        |
+| 2024-01-01 01:00:00 | 2        | triggered         | 1700        |
+| 2024-01-01 01:00:00 | 2        | response_generated| 2700        |
+
+Records in the view are aggregated by hour, so we have one record per hour per agent_id and event_type.
 
 Now we can modify the query to take advantage of the newly created continuous aggregate:
 ```sql
@@ -162,9 +174,9 @@ WHERE hour > '2025-02-28 00:00:00'
 GROUP BY agent_id, event_type
 ```
 
-TODO: how it works, real-time data
-
 This query is much faster, and it takes only 0.02 seconds.
+
+It's possible to get real-time data from the continuous aggregate, as historical data is fetched from the view, while the last hour (since we use a 1-hour bucket) is fetched from the source table.
 
 ## TimescaleDB retention
 TimescaleDB also provides a retention policy feature that allows you to automatically drop old data. Let's say that 
