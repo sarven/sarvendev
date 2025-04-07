@@ -135,7 +135,7 @@ WITH NO DATA
 ;
 ```
 
-We need to also create a refresh policy to keep the materialized view up to date.
+We also need to create a refresh policy to keep the materialized view up to date.
 ```sql
 SELECT add_continuous_aggregate_policy('hourly_agent_stats',
     start_offset => INTERVAL '1 day',
