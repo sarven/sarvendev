@@ -86,7 +86,9 @@ Renovate and Dependabot can automatically create pull requests to update depende
 which can help to ensure that you are using the latest and most secure versions of your dependencies. Keep in mind that in the case of supply chain attacks, 
 the latest version may not always be the safest, so sometimes it's better to wait a few days before installing a new version.
 
-Or at least use simple checks like npm audit or composer audit.
+#### Run security audits with package managers
+
+Run tools like npm audit or composer audit to identify known vulnerabilities in your dependencies.
 
 #### Implement detection mechanisms
 Use tools that can detect unusual behavior on servers, like unexpected read of environment variables. 
